@@ -14,6 +14,59 @@ body {
 
     background: #E9E9E9;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+#Projects {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+.ProjectsGroup {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.Layout {
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(calc(100% - 32rem), 100%)
+    1fr;
+}
+.Layout > * {
+  grid-column: 2;
+}
+
+.FullBleed {
+  width: 100%;
+  grid-column: 1 / 4;
+}
+
+.SectionPadding {
+    padding-left: 8rem;
+    padding-right: 8rem;
+}
+.SectionPaddingLeftOnly {
+    padding-left: 8rem;
+    padding-right: 0;
+}
+.SmallPadding {
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+.SmallPaddingRight {
+    padding-right: 2rem;
+}
+.ClearPadding {
+    padding: 0;
+}
+
 img {
     display: block;
     image-orientation: none; /* fix for rotated images on Safari */
@@ -35,6 +88,7 @@ b {
     text-decoration: none;
     text-align: center;
     text-wrap: balance;
+    width: fit-content;
 }
 .PrimaryButton:hover {
     background-color: #00005e;
@@ -57,24 +111,7 @@ b {
     left: 10px;
     top: 30px;
 }
-.SectionPadding {
-    padding-left: 8rem;
-    padding-right: 8rem;
-}
-.SectionPaddingLeftOnly {
-    padding-left: 8rem;
-    padding-right: 0;
-}
-.SmallPadding {
-    padding-left: 4rem;
-    padding-right: 4rem;
-}
-.SmallPaddingRight {
-    padding-right: 2rem;
-}
-.ClearPadding {
-    padding: 0;
-}
+
 .AlignedCards {
     display: flex;
     gap: 1rem;
@@ -224,7 +261,7 @@ nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
 }
 .NavLinkHome {
     display: none !important;
@@ -378,11 +415,12 @@ h2 {
     font-size: 2rem;
     font-weight: 700;
     color: #2156a6;
-    line-height: 120%;
+    line-height: 135%;
 }
 h3 {
     font-size: 1.5rem;
     font-weight: 600;
+    line-height: 135%;
 }
 h4, .Heading4 {
     font-size: 1.15rem;
@@ -439,7 +477,10 @@ h4 + p, .Heading4 + p, .Heading4 + .ParagraphGap {
 .ProjectCardInfo h3 {
     font-size: 1.9rem;
 }
-
+.BodyLarge {
+    font-size: 1.25rem;
+    line-height: 140%;
+}
 
 @media only screen and (max-width: 1000px) {
     .LightH1 {
@@ -492,10 +533,11 @@ h4 + p, .Heading4 + p, .Heading4 + .ParagraphGap {
     max-width: 100%;
 }
 .HeroMainSubHeading {
-    text-transform: uppercase;
-    font-size: 1.5rem;
+    /* text-transform: uppercase; */
+    font-size: 1.75rem;
     font-weight: 400;
     color: #000;
+    line-height: 150% !important;
 }
 .VisualDesign {
     font-weight: 700;
@@ -508,6 +550,20 @@ h4 + p, .Heading4 + p, .Heading4 + .ParagraphGap {
 .FrontEndDev {
     font-weight: 700;
     color: #A62137;
+}
+.HeroHome {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.HeroHomeHeading {
+    display: flex;
+    flex-direction: column;
+    /* gap: -4rem; */
+}
+.HeroHalfWidth {
+    max-width: 45rem;
 }
 /* #endregion HOME PAGE */
 
@@ -569,8 +625,9 @@ h4 + p, .Heading4 + p, .Heading4 + .ParagraphGap {
 }
 .ProjectCard {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    position: relative;
+    flex-direction: column;
+    /* align-items: center; */
     /* flex-direction: column; */
     /* gap: 1rem; */
     /* box-shadow: 8px 8px 16px -2px rgba(82, 82, 82, 0.25) inset, -8px -8px 16px -2px rgba(82, 82, 82, 0.25) inset; */
@@ -578,7 +635,8 @@ h4 + p, .Heading4 + p, .Heading4 + .ParagraphGap {
     border-radius: .5rem;
     text-decoration: none;
     color: initial;
-    max-height: 500px;
+    /* max-height: 500px; */
+    height: 500px;
     overflow: hidden;
     /* border: #2156a6 0px solid inset; */
     outline: #2156a6 0px solid;
@@ -593,6 +651,13 @@ box-shadow: 0px 4px 25px -9px rgba(0,0,0,0.25);
 transition: .3s ease-in-out;
 
 }
+
+/* .ProjectCard .PrimaryButton {
+    position: relative;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 9999;
+} */
 .ProjectCard:hover {
     /* background-color: #00005e; */
     /* transition: .3s ease-in-out;
@@ -640,15 +705,17 @@ box-shadow: 0px 4px 25px -9px rgba(0,0,0,0.25);
 }
 .ProjectCardText {
     /* flex: 40%; */
-    padding-right: 1rem;
+    /* padding-right: 1rem; */
     /* width: 30rem; */
     /* position:absolute; */
     /* right: 4rem; */
-    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: .75rem;
+    /* gap: .75rem; */
     text-wrap: balance;
+    padding: 2rem;
+    justify-content: space-between;
+    height: 100%;
 
 }
 .TagsContainer {
@@ -664,13 +731,17 @@ box-shadow: 0px 4px 25px -9px rgba(0,0,0,0.25);
     gap: .25rem;
 }
 .ProjectCardImage {
-    overflow: hidden;
-    padding: 2rem;
+    /* overflow: hidden; */
+    /* padding: 2rem; */
+    position: absolute;
+    right: -11rem;
+    bottom: -14rem;
 }
 #OptimalAssessment .ProjectCardImage {
     padding-bottom: 0;
 }
 .ProjectCardImage img {
-    max-width: 100%;
+    /* max-width: 100%; */
+    width: 60rem;
 }
 /* #endregion PROJECT CARDS */
